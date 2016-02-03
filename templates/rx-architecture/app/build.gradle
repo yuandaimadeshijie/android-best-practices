@@ -10,7 +10,7 @@ buildscript {
 
 apply plugin: 'com.android.application'
 apply plugin: 'checkstyle'
-apply plugin: 'robolectric'
+//apply plugin: 'robolectric'
 
 dependencies {
     compile 'io.reactivex:rxjava:1.0.8'
@@ -57,17 +57,12 @@ android {
     }
     signingConfigs {
         release {
-            try {
                 // Define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties
                 // (Only where you do release builds; do NOT commit those into version control.)
                 storeFile file("example.keystore")
                 storePassword KEYSTORE_PASSWORD
                 keyAlias "client"
                 keyPassword KEY_PASSWORD
-            }
-            catch (ex) {
-                logger.warning('NB: For release builds, you must define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.')
-            }
         }
     }
     buildTypes {
